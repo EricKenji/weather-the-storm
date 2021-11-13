@@ -12,16 +12,18 @@ var searchCity = function (event) {
     }
 };
 
-var fetchCurrent = function (city) {
+// fetch API data
+var fetchCurrent = (city) => {
     var apiCall = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
 
     fetch(apiCall).then(function (response) {
-        if(response.ok) {
-            response.json().then(function(data) {
-
+        if (response.ok) {
+            response.json().then(function (data) {
                 displayCurrent(data);
-
-            })
+                console.log(data);
+            });
+        } else {
+            alert("Not a valid city name");
         }
     });
 };
@@ -29,16 +31,15 @@ var fetchCurrent = function (city) {
 // Display current weather function //
 var displayCurrent = function(data) {
     //DOM elements to be changed
-    var currentCityEl = document.querySelector("#current-city");
+    var currentCityEl = document.querySelector(".current-city");
     var iconEl = document.querySelector("#icon");
     var temperatureEl = document.querySelector("#temp");
     var windspeedEl = document.querySelector("#windspeed");
     var humidityEl = document.querySelector("#humidity");
 
-    var currentCity = data.name;
-
-    currentCityEl.textContent = currentCity;
-
+    // Display current city
+    currentCityEl.textContent = data.name;
+    // change temperature, windspeed, and humidity
     temperatureEl.textContent = data.main.temp;
     windspeedEl.textContent = data.wind.speed;
     humidityEl.textContent = data.main.humidity;

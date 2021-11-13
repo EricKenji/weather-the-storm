@@ -1,0 +1,1 @@
+document.getElementsByClassName("current-city").textContent = "test";
