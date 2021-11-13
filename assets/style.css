@@ -9,6 +9,7 @@ body {
 }
 
 main {
+    display:flex;
     margin: 2%;
 }
 
@@ -23,7 +24,6 @@ main {
 
 .card {
     margin: 0 0 20px 0;
-    width: 25%;
     border: 3px solid;
 }
 
@@ -53,4 +53,28 @@ main {
     outline: none;
     background-color:lightsteelblue;
     border-radius: 7px;
+  }
+
+  .history {
+      border: solid;
+      height: 47vh;
+  }
+
+  .forecast-main {
+    flex: 75%;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding: 15px;
+    border: solid;
+    height: 70vh;
+  }
+
+  .current {
+      border: solid;
+      height: 50%;
+  }
+
+  .five-day {
+      border: solid;
+      height: 50%;
   }
