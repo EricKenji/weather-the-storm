@@ -33,12 +33,16 @@ var displayCurrent = function(data) {
     //DOM elements to be changed
     var currentCityEl = document.querySelector(".current-city");
     var iconEl = document.querySelector("#icon");
+    var statusEl = document.querySelector("#status");
     var temperatureEl = document.querySelector("#temp");
     var windspeedEl = document.querySelector("#windspeed");
     var humidityEl = document.querySelector("#humidity");
 
     // Display current city
     currentCityEl.textContent = data.name;
+    // Display icon and status
+    iconEl.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.weather[0].icon + "@2x.png");
+    statusEl.textContent = data.weather[0].main;
     // change temperature, windspeed, and humidity
     temperatureEl.textContent = data.main.temp;
     windspeedEl.textContent = data.wind.speed;
