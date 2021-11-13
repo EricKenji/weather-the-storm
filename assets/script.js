@@ -100,7 +100,7 @@ var fetchUv = function (data) {
 var displayUv = function (data) {
     var uvIndexEl = document.querySelector("#uv-index");
     console.log(data.current.uvi)
-    uvIndexEl.textContent = 15;
+    uvIndexEl.textContent = data.current.uvi;
 
     // Change color of UV Index 
     if (parseInt(uvIndexEl.textContent) < 3) {
