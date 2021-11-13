@@ -14,7 +14,7 @@ var searchCity = function (event) {
 
 // fetch API data
 var fetchCurrent = (city) => {
-    var apiCall = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
+    var apiCall = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
 
     fetch(apiCall).then(function (response) {
         if (response.ok) {
