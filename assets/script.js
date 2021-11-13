@@ -26,6 +26,23 @@ var fetchCurrent = function (city) {
     });
 };
 
+// Display current weather function //
+var displayCurrent = function(data) {
+    //DOM elements to be changed
+    var currentCityEl = document.querySelector("#current-city");
+    var iconEl = document.querySelector("#icon");
+    var temperatureEl = document.querySelector("#temp");
+    var windspeedEl = document.querySelector("#windspeed");
+    var humidityEl = document.querySelector("#humidity");
+
+    var currentCity = data.name;
+
+    currentCityEl.textContent = currentCity;
+
+    temperatureEl.textContent = data.main.temp;
+    windspeedEl.textContent = data.wind.speed;
+    humidityEl.textContent = data.main.humidity;
+};
 
 
 
