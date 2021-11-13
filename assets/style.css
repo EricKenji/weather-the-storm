@@ -60,6 +60,10 @@ main {
       height: 47vh;
   }
 
+  #button1 button {
+      display: block;
+  }
+
   .forecast-main {
     flex: 75%;
     margin-left: 15px;
@@ -68,9 +72,28 @@ main {
     border: solid;
   }
 
-  .current {
+/* UV index colors start */
+.low {
+    background-color: lightgreen;
+}
 
-  }
+.moderate {
+    background-color: yellow;
+}
+
+.high {
+    background-color: orange;
+}
+
+.very-high {
+    background-color: red;
+}
+
+.extreme {
+    background-color: blueviolet;
+    color: white;
+}
+/* UV index coloer end */
 
   .five-day {
 

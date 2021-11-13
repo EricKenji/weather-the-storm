@@ -25,17 +25,15 @@
             <!--search history-->
             <div class="history">
                 <h3>Search History</h3>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
+                <p id="button1"></p>
+                
             </div>
         </div>
         <!--weather results-->
         <div class="forecast-main">
             <!-- current forecast -->
             <div class="current">
-                <h3>Today's forecast for:</h3>
+                <h3>Current Weather on<span id="date"></span></h3>
                 <h3 class = "current-city"></h3><img id="icon" />
                 <p><span id="status"></span></p>
             </div>
@@ -51,6 +49,7 @@
         </div>
 
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>
