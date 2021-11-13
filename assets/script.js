@@ -41,7 +41,7 @@ var displayCurrent = function(data) {
     // Display current city
     currentCityEl.textContent = data.name;
     // Display icon and status
-    iconEl.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.weather[0].icon + "@2x.png");
+    iconEl.setAttribute("src", "https://openweathermap.org/img/wn/"+ data.weather[0].icon + "@2x.png");
     statusEl.textContent = data.weather[0].main;
     // change temperature, windspeed, and humidity
     temperatureEl.textContent = data.main.temp;
