@@ -60,8 +60,21 @@ main {
       height: 47vh;
   }
 
+  .history h3 {
+      text-align: center;
+  }
+
   #button1 button {
-      display: block;
+    display: block;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color:lightsteelblue;
+    border: solid 1px;
+    border-radius: 7px;
   }
 
   .forecast-main {
@@ -95,7 +108,15 @@ main {
 }
 /* UV index coloer end */
 
-  .five-day {
+.five-day {
+    height: 50%;
+}
 
-      height: 50%;
-  }
+.fiveday-container {
+    display: flex;
+    justify-content: space-around;
+};
+
+.fiveday-section {
+    background-color: lightsteelblue;
+}

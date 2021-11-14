@@ -1,6 +1,7 @@
 var searchEl = document.querySelector(".text-input");
 var searchFormEl = document.querySelector(".search-form");
 var btnEl = document.querySelector(".button");
+var fiveDayContainerEl = document.querySelector(".fiveday-container");
 
 // search city function
 var searchCity = function (event) {
@@ -16,9 +17,9 @@ var searchCity = function (event) {
 
 
 // Create City Array
-
 var storeCity = function (city) {
     citiesArray.push(city);
+    cityStorage();
 };
 
 // add to search history
@@ -40,9 +41,14 @@ for (var i = 0; i < citiesArray.length; i++) {
     addSearchHistory(citiesArray[i]);
 }
 
+// set array to localStorage
+var cityStorage = function() {
+    localStorage.setItem("city-names", JSON.stringify(citiesArray));
+}
 
 
-// fetch API data
+
+// fetch API data for current weather
 var fetchCurrent = (city) => {
     var apiCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
 
@@ -56,6 +62,16 @@ var fetchCurrent = (city) => {
         } else {
             alert("Not a valid city name");
         }
+    });
+};
+
+// Fetch API Data for 5 day forecast
+var fetchFiveDay = function(city) {
+    var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
+    fetch(apiFive).then(function(response) {
+        response.json().then(function(data) {
+            displayFive(data);
+        })
     });
 };
 
@@ -83,15 +99,27 @@ var displayCurrent = function(data) {
     humidityEl.textContent = data.main.humidity + "%";
 };
 
+//Display 5 day forecast function
+var displayFive = function(data) {
+    for (var i = 5; i < 38; i += 8) {
+        // create box for 5 day forecast
+        var fiveDayBox = document.createElement("div");
+        fiveDayBox.className = "fiveday-section";
+        fiveDayContainerEl.appendChild(fiveDayBox);
+
+        //take date for api data and reformats 
+        var fiveDayDate = moment(data.list[i].dt_txt).format('M d YY');
+
+    }
+}
+
 // fetch API UV index
 var fetchUv = function (data) {
     var apiUv = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&APPID=9488ec8c097fd6f500089eda4c1d7cef";
     // Fetch API URL
     fetch(apiUv).then(function (response) {
             response.json().then(function (data) {
-                console.log(data);
                 displayUv(data);;
-
             });
     });
 };
@@ -99,7 +127,6 @@ var fetchUv = function (data) {
 // Display UV Index
 var displayUv = function (data) {
     var uvIndexEl = document.querySelector("#uv-index");
-    console.log(data.current.uvi)
     uvIndexEl.textContent = data.current.uvi;
 
     // Change color of UV Index 
@@ -115,6 +142,8 @@ var displayUv = function (data) {
         uvIndexEl.className = "extreme";
     }
 };
+
+
 
 
 
