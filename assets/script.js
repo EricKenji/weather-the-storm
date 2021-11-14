@@ -107,11 +107,37 @@ var displayFive = function(data) {
         fiveDayBox.className = "fiveday-section";
         fiveDayContainerEl.appendChild(fiveDayBox);
 
-        //take date for api data and reformats 
+        //reformat date for api data and display
         var fiveDayDate = moment(data.list[i].dt_txt).format('M d YY');
+        var fiveDayDateDisplay = document.createElement("h4");
+        fiveDayDateDisplay.textContent = fiveDayDate;
+        fiveDayContainerEl.appendChild(fiveDayDateDisplay);
 
-    }
-}
+        // display 5 day weather icons
+        var fiveDayIcon = document.createElement("img");
+        fiveDayIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png");
+        fiveDayIcon.setAttribute("class", "fiveday-icon");
+        fiveDayContainerEl.appendChild(fiveDayIcon);
+
+        // display 5 day temperature
+        var fiveDayTemp = document.createElement("p");
+        fiveDayTemp.setAttribute("class", "fiveday-temp");
+        fiveDayTemp.textContent = ("Temp: " + data.list[i].main.temp + " F");
+        fiveDayContainerEl.appendChild(fiveDayTemp);
+
+        // display 5 day wind speed
+        var fiveDayWind = document.createElement("p");
+        fiveDayWind.setAttribute("class", "fiveday-wind");
+        fiveDayWind.textContent = ("Wind: " + data.list[i].wind.speed + " MPH");
+        fiveDayContainerEl.appendChild(fiveDayWind);
+
+        // display 5 day humidity
+        var fiveDayHumidity = document.createElement("p");
+        fiveDayHumidity.setAttribute("class", "fiveday-humidity");
+        fiveDayHumidity.textContent = ("Humidity: " + data.list[i].main.humidity + "%");
+        fiveDayContainerEl.appendChild(fiveDayHumidity);
+    };
+};
 
 // fetch API UV index
 var fetchUv = function (data) {
