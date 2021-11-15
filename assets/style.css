@@ -114,9 +114,10 @@ main {
 
 .fiveday-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 };
 
 .fiveday-section {
     background-color: lightsteelblue;
+    display: flex;
 }

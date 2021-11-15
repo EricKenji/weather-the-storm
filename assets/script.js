@@ -12,6 +12,7 @@ var searchCity = function (event) {
         fetchCurrent(cityName);
         storeCity(cityName);
         addSearchHistory(cityName);
+        fetchFiveDay(cityName);
     }
 };
 
@@ -57,7 +58,6 @@ var fetchCurrent = (city) => {
             response.json().then(function (data) {
                 displayCurrent(data);
                 fetchUv(data);
-                console.log(data);
             });
         } else {
             alert("Not a valid city name");
@@ -68,9 +68,10 @@ var fetchCurrent = (city) => {
 // Fetch API Data for 5 day forecast
 var fetchFiveDay = function(city) {
     var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&APPID=9488ec8c097fd6f500089eda4c1d7cef";
-    fetch(apiFive).then(function(response) {
+    fetch(apiFive).then(function (response) {
         response.json().then(function(data) {
             displayFive(data);
+            console.log(data);
         })
     });
 };
@@ -101,6 +102,7 @@ var displayCurrent = function(data) {
 
 //Display 5 day forecast function
 var displayFive = function(data) {
+    fiveDayContainerEl.textContent = "";
     for (var i = 5; i < 38; i += 8) {
         // create box for 5 day forecast
         var fiveDayBox = document.createElement("div");
@@ -108,34 +110,34 @@ var displayFive = function(data) {
         fiveDayContainerEl.appendChild(fiveDayBox);
 
         //reformat date for api data and display
-        var fiveDayDate = moment(data.list[i].dt_txt).format('M d YY');
+        var fiveDayDate = moment(data.list[i].dt_txt).format('MMMM Do YYYY');
         var fiveDayDateDisplay = document.createElement("h4");
         fiveDayDateDisplay.textContent = fiveDayDate;
-        fiveDayContainerEl.appendChild(fiveDayDateDisplay);
+        fiveDayBox.appendChild(fiveDayDateDisplay);
 
         // display 5 day weather icons
         var fiveDayIcon = document.createElement("img");
         fiveDayIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png");
         fiveDayIcon.setAttribute("class", "fiveday-icon");
-        fiveDayContainerEl.appendChild(fiveDayIcon);
+        fiveDayBox.appendChild(fiveDayIcon);
 
         // display 5 day temperature
         var fiveDayTemp = document.createElement("p");
         fiveDayTemp.setAttribute("class", "fiveday-temp");
         fiveDayTemp.textContent = ("Temp: " + data.list[i].main.temp + " F");
-        fiveDayContainerEl.appendChild(fiveDayTemp);
+        fiveDayBox.appendChild(fiveDayTemp);
 
         // display 5 day wind speed
         var fiveDayWind = document.createElement("p");
         fiveDayWind.setAttribute("class", "fiveday-wind");
         fiveDayWind.textContent = ("Wind: " + data.list[i].wind.speed + " MPH");
-        fiveDayContainerEl.appendChild(fiveDayWind);
+        fiveDayBox.appendChild(fiveDayWind);
 
         // display 5 day humidity
         var fiveDayHumidity = document.createElement("p");
         fiveDayHumidity.setAttribute("class", "fiveday-humidity");
         fiveDayHumidity.textContent = ("Humidity: " + data.list[i].main.humidity + "%");
-        fiveDayContainerEl.appendChild(fiveDayHumidity);
+        fiveDayBox.appendChild(fiveDayHumidity)
     };
 };
 
