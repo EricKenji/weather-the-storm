@@ -1,3 +1,4 @@
+// Dom element variables
 var searchEl = document.querySelector(".text-input");
 var searchFormEl = document.querySelector(".search-form");
 var btnEl = document.querySelector(".button");
@@ -171,16 +172,5 @@ var displayUv = function (data) {
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-  //Event listeners
+  //Event listener for button click
   btnEl.addEventListener("click", searchCity);

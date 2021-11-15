@@ -22,6 +22,8 @@ main {
     text-align: center;
 }
 
+  /* Search section styling start */
+
 .card {
     margin: 0 0 20px 0;
     border: 3px solid;
@@ -42,9 +44,9 @@ main {
     margin: 5px 0;
     font-size: 18px;
     border: 2px solid;
-  }
+}
 
-  .button {
+.button {
     padding: 6px 5px;
     width: 100%;
     display: block;
@@ -53,8 +55,10 @@ main {
     outline: none;
     background-color:lightsteelblue;
     border-radius: 7px;
-  }
+}
+  /* Search section styling end */
 
+/* Search History styling start */
   .history {
       border: solid;
       height: 47vh;
@@ -76,7 +80,9 @@ main {
     border: solid 1px;
     border-radius: 7px;
   }
+/* Search History styling end */
 
+/* current weather styling start */
   .forecast-main {
     flex: 75%;
     margin-left: 15px;
@@ -84,6 +90,8 @@ main {
     padding: 15px;
     border: solid;
   }
+/* current weather styling end */
+
 
 /* UV index colors start */
 .low {
@@ -108,6 +116,7 @@ main {
 }
 /* UV index coloer end */
 
+/* Five day forecast styling start */
 .five-day {
     height: 50%;
 }
@@ -121,3 +130,4 @@ main {
     background-color: lightsteelblue;
     display: flex;
 }
+/* Five day forecast styling end */
