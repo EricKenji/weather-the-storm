@@ -16,4 +16,4 @@ https://erickenji.github.io/weather-the-storm/
 ## Contribution
 Made by Eric Furukawa
 
-### Eric Kenji Furukawa
+![WTS](https://user-images.githubusercontent.com/16628477/141705443-e0ca5767-9cdc-4d4c-86bc-340c876e620f.png)
